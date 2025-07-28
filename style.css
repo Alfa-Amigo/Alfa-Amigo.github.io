@@ -1,0 +1,185 @@
+:root {
+    --primary: #4e73df;
+    --primary-light: #7e9eff;
+    --primary-dark: #2653c4;
+    --secondary: #f6c23e;
+    --success: #1cc88a;
+    --info: #36b9cc;
+    --warning: #f6c23e;
+    --danger: #e74a3b;
+    --light: #f8f9fc;
+    --dark: #5a5c69;
+    --white: #fff;
+    --gray: #858796;
+}
+
+/* Estructura base */
+body {
+    font-family: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background-color: #f8f9fc;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+}
+
+/* Barra de navegación */
+.navbar {
+    box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15);
+    background: var(--primary) !important;
+}
+
+.navbar-brand {
+    font-weight: 800;
+    font-size: 1.25rem;
+}
+
+/* Tarjetas de lección */
+.lesson-card {
+    border: none;
+    border-radius: 0.35rem;
+    box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.1);
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.lesson-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0.5rem 1.5rem 0 rgba(58, 59, 69, 0.2);
+}
+
+.lesson-card .card-header {
+    background-color: var(--primary);
+    color: white;
+    font-weight: 600;
+    border-bottom: none;
+}
+
+.lesson-card .card-body {
+    padding: 1.5rem;
+}
+
+.lesson-card .card-footer {
+    background-color: rgba(78, 115, 223, 0.05);
+    border-top: none;
+}
+
+/* Contenido de lecciones */
+.lesson-content {
+    background-color: var(--white);
+    border-radius: 0.35rem;
+    box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.1);
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+.lesson-content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 0.25rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 0.15rem 0.5rem 0 rgba(0, 0, 0, 0.1);
+}
+
+/* Cuestionarios */
+.quiz-question {
+    background-color: var(--white);
+    border-left: 4px solid var(--primary);
+    margin-bottom: 1.5rem;
+}
+
+.option-btn {
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 0.25rem;
+    transition: all 0.2s;
+}
+
+.option-btn:hover {
+    background-color: #f8f9fc;
+    border-color: var(--primary-light);
+}
+
+.option-btn.correct {
+    background-color: rgba(28, 200, 138, 0.1);
+    border-color: var(--success);
+    color: var(--success);
+}
+
+.option-btn.incorrect {
+    background-color: rgba(231, 74, 59, 0.1);
+    border-color: var(--danger);
+    color: var(--danger);
+}
+
+/* Progreso */
+.progress {
+    height: 1rem;
+    border-radius: 0.35rem;
+}
+
+.progress-bar {
+    background-color: var(--primary);
+}
+
+/* Diseño responsive */
+@media (max-width: 768px) {
+    .lesson-card {
+        margin-bottom: 1.5rem;
+    }
+    
+    .lesson-content {
+        padding: 1rem;
+    }
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.lesson-card {
+    animation: fadeIn 0.5s ease forwards;
+}
+
+/* Efectos para adultos mayores */
+body {
+    font-size: 18px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--dark);
+}
+
+.btn {
+    font-size: 1.1rem;
+    padding: 0.5rem 1.5rem;
+}
+
+.form-control {
+    font-size: 1.1rem;
+    padding: 0.5rem 1rem;
+}
+
+/* Mejoras de contraste */
+.navbar-dark .navbar-nav .nav-link {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.text-primary {
+    color: var(--primary-dark) !important;
+}
+
+/* Iconos */
+.icon-lg {
+    font-size: 1.5rem;
+    vertical-align: middle;
+    margin-right: 0.5rem;
+}

@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block title %}{{ lesson.title }}{% endblock %}
+
+{% block content %}
+<div class="lesson-container">
+    <div class="lesson-header mb-4">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ url_for('index') }}">Inicio</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{ lesson.title }}</li>
+            </ol>
+        </nav>
+        
+        <h2><i class="fas fa-{{ lesson.icon }} me-2"></i> {{ lesson.title }}</h2>
+        <p class="text-muted">{{ lesson.description }}</p>
+    </div>
+    
+    <div class="lesson-content mb-5">
+        {% for item in lesson.content %}
+        <div class="content-block mb-4 p-4 bg-white rounded shadow-sm">
+            {% if item.type == "video" %}
+            <div class="ratio ratio-16x9 mb-3">
+                <video controls class="rounded">
+                    <source src="{{ item.url }}" type="video/mp4">
+                    Tu navegador no soporta videos.
+                </video>
+            </div>
+            {% elif item.type == "text" %}
+            <div class="text-content">
+                {{ item.content }}
+            </div>
+            {% elif item.type == "interactive" %}
+            <div class="interactive-content p-3 bg-light rounded">
+                <h5 class="text-center mb-3">Practica</h5>
+                <div class="text-center" style="font-size: 2rem;">
+                    {{ item.content }}
+                </div>
+                <div class="text-center mt-3">
+                    <button class="btn btn-sm btn-outline-primary">
+                        <i class="fas fa-volume-up me-1"></i> Escuchar
+                    </button>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+    
+    <div class="lesson-footer text-center">
+        <a href="{{ url_for('quiz', lesson_id=lesson.id) }}" class="btn btn-primary btn-lg">
+            <i class="fas fa-play me-2"></i> Realizar cuestionario
+        </a>
+    </div>
+</div>
+{% endblock %}

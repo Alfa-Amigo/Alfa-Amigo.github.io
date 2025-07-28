@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}Inicio{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-md-8 mx-auto text-center">
+        <h1 class="display-4">¡Bienvenido, {{ user.name }}!</h1>
+        <p class="lead">Continúa tu viaje de aprendizaje</p>
+        
+        <div class="progress mb-4" style="height: 20px;">
+            <div class="progress-bar bg-success" style="width: {{ (user.completed_lessons|length / lessons|length * 100) if lessons|length > 0 else 0 }}%">
+                {{ ((user.completed_lessons|length / lessons|length * 100) if lessons|length > 0 else 0)|round(1) }}%
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    {% for lesson in lessons %}
+    <div class="col-md-4 mb-4">
+        <div class="card h-100 {% if lesson.id in user.completed_lessons %}border-success{% else %}border-primary{% endif %}">
+            <div class="card-header bg-{% if lesson.id in user.completed_lessons %}success{% else %}primary{% endif %} text-white">
+                <i class="fas fa-{{ lesson.icon }} me-2"></i>{{ lesson.category }}
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">{{ lesson.title }}</h5>
+                <p class="card-text">{{ lesson.description }}</p>
+                {% if lesson.id in user.completed_lessons %}
+                <span class="badge bg-success mb-3">
+                    <i class="fas fa-check"></i> Completado
+                </span>
+                {% endif %}
+            </div>
+            <div class="card-footer bg-transparent">
+                <a href="{{ url_for('lesson_detail', lesson_id=lesson.id) }}" class="btn btn-{% if lesson.id in user.completed_lessons %}outline-success{% else %}primary{% endif %}">
+                    {% if lesson.id in user.completed_lessons %}Repasar{% else %}Comenzar{% endif %}
+                </a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
