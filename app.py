@@ -87,7 +87,7 @@ def logout():
     session.pop('user', None)
     return redirect(url_for('login'))
 
+
+
 if __name__ == '__main__':
-    os.makedirs('data', exist_ok=True)
-    os.makedirs('static/images/lessons', exist_ok=True)
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=10000)
